@@ -13,8 +13,7 @@ namespace UnityStandardAssets.ImageEffects
         /// give better looking blur, but require more iterations to
         /// get large blurs. Value is usually between 0.5 and 1.0.
         public float blurSpread = 0.6f;
-
-
+        
         // The blur iteration shader.
         // Basically it just takes 4 texture samples and averages them.
         // By applying it repeatedly and spreading out sample locations
@@ -39,8 +38,7 @@ namespace UnityStandardAssets.ImageEffects
         public Material cutOutMaterial;
 
         public Camera bgCamera;
-
-
+        
         RenderTexture bgTargetTexture;
 
         private void OnEnable()
@@ -80,7 +78,6 @@ namespace UnityStandardAssets.ImageEffects
                 enabled = false;
                 return;
             }
-
         }
 
         // Performs one blur iteration.
@@ -132,9 +129,6 @@ namespace UnityStandardAssets.ImageEffects
 					RenderTexture.ReleaseTemporary (buffer);
 					buffer = buffer2;
             }
-
-
-     
             Graphics.Blit(bgTargetTexture, destination); // background
 			Graphics.Blit(buffer, destination, cutOutMaterial); // water
             RenderTexture.ReleaseTemporary(buffer);

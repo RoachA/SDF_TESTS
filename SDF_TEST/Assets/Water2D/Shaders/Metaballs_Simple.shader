@@ -1,5 +1,3 @@
-
-
 Shader "Water2D/Metaballs_Simple" {
 Properties {    
     _MainTex ("Texture", 2D) = "white" { }    
@@ -12,17 +10,18 @@ Properties {
 }
 /// <summary>
 /// Multiple metaball shader.
-
 /// </summary>
 SubShader {
 	Tags {"Queue"="AlphaTest" "IgnoreProjector"="True" "RenderType"="TransparentCutout"}
 	GrabPass{}
-    Pass {
-    Blend SrcAlpha OneMinusSrcAlpha     
+    Pass
+	{ 
+    // (SrcVal x sourceAlpha) + (SrcAlpha x (1 - sourceAlpha) -- classic transparent  
+    Blend SrcAlpha OneMinusSrcAlpha 
   // Blend One One // Additive
   // Blend One OneMinusSrcAlpha
 	CGPROGRAM
-	#pragma vertex vert
+	#pragma vertex vert 
 	#pragma fragment frag	
 	#include "UnityCG.cginc"	
 	float4 _Color;
@@ -42,8 +41,10 @@ SubShader {
 	float4 _MainTex_ST;		
 	v2f vert (appdata_base v){
 	    v2f o;
-	    o.pos = UnityObjectToClipPos (v.vertex);
-	    o.uv = TRANSFORM_TEX (v.texcoord, _MainTex);
+		// Tranforms position from object to homogenous space
+	    o.pos = UnityObjectToClipPos (v.vertex); 
+		//It scales and offsets texture coordinates. XY values controls the texture tiling and ZW the offset.
+	    o.uv = TRANSFORM_TEX (v.texcoord, _MainTex); 
 	    return o;
 	};
 
@@ -54,17 +55,16 @@ SubShader {
 
 		clip(texcol.a - _Cutoff);
 
-		if (texcol.a < _Stroke) {
+		if (texcol.a < _Stroke)
+		{
 			texcol = _StrokeColor;
 		} else {
 			texcol = _Color;
 		}				
 	 	return texcol;  
 	}
-
 	ENDCG
-
-    }
+	}
 }
 Fallback "VertexLit"
 } 
