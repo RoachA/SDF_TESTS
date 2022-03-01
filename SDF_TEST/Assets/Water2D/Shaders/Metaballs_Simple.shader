@@ -58,13 +58,8 @@ SubShader {
 			texcol = _StrokeColor;
 		} else {
 			texcol = _Color;
-		}
-					
-
-		
-	 	return texcol;
-	 	
-	   
+		}				
+	 	return texcol;  
 	}
 
 	ENDCG
