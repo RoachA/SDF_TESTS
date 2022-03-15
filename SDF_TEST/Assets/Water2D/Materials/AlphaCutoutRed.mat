@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AlphaCutout
+  m_Name: AlphaCutoutRed
   m_Shader: {fileID: 4800000, guid: 1927ba03d373e714da05efebdae2316f, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 5
@@ -61,7 +61,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _Cutoff: 0.313
+    - _Cutoff: 0.082
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Frecuency: 200
@@ -72,11 +72,11 @@ Material:
     - _Parallax: 0.02
     - _RefractOffset: 0.0421
     - _SrcBlend: 1
-    - _Stroke: 1
+    - _Stroke: 0.935
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.15263437, g: 0.9245283, b: 0.38409743, a: 1}
+    - _Color: {r: 0.9528302, g: 0.70509267, b: 0.004494493, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _StrokeColor: {r: 0.7110347, g: 0.9150943, b: 0.23740657, a: 1}
+    - _StrokeColor: {r: 1, g: 0.5691918, b: 0, a: 1}
   m_BuildTextureStacks: []

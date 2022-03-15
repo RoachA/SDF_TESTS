@@ -33,18 +33,21 @@ SubShader {
 
 	float4 _CameraDepthTexture_TexelSize;
 
-	struct v2f {
+	struct v2f
+	{
 	    float4  pos : SV_POSITION;
 	    float2  uv : TEXCOORD0;
 	};	
 
-	float4 _MainTex_ST;		
+	float4 _MainTex_ST;
+	
 	v2f vert (appdata_base v){
 	    v2f o;
 		// Tranforms position from object to homogenous space
 	    o.pos = UnityObjectToClipPos (v.vertex); 
 		//It scales and offsets texture coordinates. XY values controls the texture tiling and ZW the offset.
-	    o.uv = TRANSFORM_TEX (v.texcoord, _MainTex); 
+	    o.uv = TRANSFORM_TEX (v.texcoord, _MainTex);
+		
 	    return o;
 	};
 
@@ -54,13 +57,17 @@ SubShader {
 		//half4 finalColor = texcol;
 
 		clip(texcol.a - _Cutoff);
+		texcol = lerp(_StrokeColor, _Color, texcol.a - _Cutoff);
 
-		if (texcol.a < _Stroke)
+		/*if (texcol.a < _Stroke)
 		{
 			texcol = _StrokeColor;
-		} else {
+		}
+		else
+		{
 			texcol = _Color;
-		}				
+		}*/
+		
 	 	return texcol;  
 	}
 	ENDCG
